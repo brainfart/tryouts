@@ -16,11 +16,31 @@ When the demo application of prototype is accepted you only have to enlarge your
 So what would I do different:
 1. First I would introduce a IoC container to inject the dependencies
 2. Create a backend service that uses messaging for interaction with both the web application as the backoffice application.
-3. Create a backoffice application in WPF
+3. Create a backoffice application for management and daily operations in WPF
 
 To be clear the website will ofcourse use the MVC (Model View Controller) pattern, while the backoffice would use the MVVM (Model View ViewModel) or MVP (Model View Presenter) approach. 
 Neither have direct access to the database. They both communicate with the backend service.
 
-Why a backend service? Well, what if we need multiple front-ends to our application. These days you're not only dealing with desktop browsers, but also mobile browsers (which have smaller screens), but what about phone applications. As this is my tryout repository I will use it also to create a Windows Phone 7 application based on Silverlight 4.
+Why a backend service? Well, what if we need multiple front-ends to our application. Back in 2001 I was already writing micro sites to integrate them with Chello Media Services. 
+But these days we're not only dealing with desktop browsers, but also mobile browsers (which have smaller screens). Not to mention the rich application we write for smart phones like the recently launched Windows Phone 7 based on Silverlight 4.
+
+Using multipe front-ends to suit the particuler needs for the application is a lot easier when you have a common backend which contains all the business logic and the only job for the frontend is to display the screens and capture the user input.
+Since the early days of .Net I'm using messaging to glue the fronend and backend together. If third parties must have access to some of my services I'm using webservices and more lately WCF as a frontend for my communication layer.
+
+In this scenario I'll be using the Rhino (Enterprise) Service Bus which the frontends (website, WP7 app and the backoffice (WPF) use to communicate with the backend.
+The website will be using ASP.NET MVC 3 (and because most examples stick with webforms I'll be using the Razor template engine), the WP7 app Caliburn Micro framework and the Backoffice will use the full Caliburn framework.
+
+In this scenario I'll use only open-source components and libraries that may also be used in commercial projects. A demo is useless if you can't use it in the real world.
+Other libraries used:
+- NHibernate (persistency framework)
+- Fluent NHibernate (mapping and configuration for NHibernate)
+- Windsor Containers (IoC framework)
+- Automapper (for mapping messages from and to domain models)
+- Caliburn (WPF MVVM framework)
+- Rhino Service bus (messaging framework)
+- Rhino Queues (messaging queues)
+
+
+
 
 

@@ -1,0 +1,26 @@
+My first project (scenario) is the MVC2 demo application 'MVC Music Store'.
+
+Like most demo applications, the "MVC Music Store" was written to showcase ASP.NET MVC 2. One of the 'things' I really dislike about web application, but see very often, is an online management interface for dealing with the catalog, customers and their orders.
+Taks like these belongs in a backoffice. The front office is a front (user interface) towards the customer. Beside that their a few security issues about having a online backoffice.
+
+1. The backoffice users themselfs. Everybody knows people (read: non-nerds) have trouble using strong (unique) passwords. That makes it not to hard to 'hack' someones account.
+2. If you have a online backoffice, only shielded from the general public by a login, not much different used with customer logins that want to checkout, you've created a hackers heaven.
+
+I hear you see 'But this is a demo application'. That's true. But ask yourself this question: What was one of the very first few things you did when you became a developer. 
+That's right. You looked at other (open source) application to see how they do it. An source code releases by memebers of Microsoft (or either strongly affiliated with Microsoft) are considered heavy weights on how to program.
+
+I have the same philosophy about demo applications and prototypes. Just build it like a real application, only with smaller entities. Like a product only needs an ID, name and a price. A customer also only need a ID, name, email and password.
+When the demo application of prototype is accepted you only have to enlarge your entities and write the business logic to finish the application, and not start over because the prototype was never meant to used in a realworld application.
+
+
+So what would I do different:
+1. First I would introduce a IoC container to inject the dependencies
+2. Create a backend service that uses messaging for interaction with both the web application as the backoffice application.
+3. Create a backoffice application in WPF
+
+To be clear the website will ofcourse use the MVC (Model View Controller) pattern, while the backoffice would use the MVVM (Model View ViewModel) or MVP (Model View Presenter) approach. 
+Neither have direct access to the database. They both communicate with the backend service.
+
+Why a backend service? Well, what if we need multiple front-ends to our application. These days you're not only dealing with desktop browsers, but also mobile browsers (which have smaller screens), but what about phone applications. As this is my tryout repository I will use it also to create a Windows Phone 7 application based on Silverlight 4.
+
+
